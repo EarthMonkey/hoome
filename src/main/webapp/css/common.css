@@ -1,0 +1,276 @@
+body {
+    font-family: Helvetica, Tahoma, Arial, "PingFang SC", Heiti, “黑体”, “Microsoft YaHei”, “微软雅黑”, SimSun, “宋体”, sans-serif;
+}
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(/fonts/google-icons/MaterialIcons-Regular.eot);
+    /* For IE6-8 */
+    src: local('Material Icons'), local('MaterialIcons-Regular'), url(/fonts/google-icons/MaterialIcons-Regular.woff2) format('woff2'), url(/fonts/google-icons/MaterialIcons-Regular.woff) format('woff'), url(/fonts/google-icons/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+.thin-text {
+    font-weight: 300;
+}
+
+.normal-text {
+    font-weight: 500;
+}
+
+.bold-text {
+    font-weight: 800;
+}
+
+.padding-left-10 {
+    padding-left: 10px;
+}
+
+.padding-left-30 {
+    padding-left: 30px;
+}
+
+.padding-bottom-20 {
+    padding-bottom: 20px;
+}
+.margin-left-5 {
+    margin-left: 5px;
+}
+
+.margin-left-10 {
+    margin-left: 10px;
+}
+
+.margin-left-20 {
+    margin-left: 20px;
+}
+
+.margin-right-10 {
+    margin-right: 10px;
+}
+
+.margin-left-30 {
+    margin-left: 30px;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.margin-top-40 {
+    margin-top: 40px;
+}
+
+.min-height-500 {
+    min-height: 500px;
+}
+
+.min-height-700 {
+    min-height: 700px;
+}
+
+@media only screen and (max-width: 601px) {
+    #userInfo {
+        display: none;
+    }
+}
+
+.my-userName {
+    font-size: 1.4em;
+    margin-top: 6px;
+    text-align: center;
+}
+
+.my-userName span {
+    font-size: 1em;
+    color: #2FA59A;
+    font-weight: 300;
+    margin-left: 2px;
+}
+
+.user-backColor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 180px;
+}
+
+.my-info li {
+    font-size: 1.3em;
+    margin-top: 5px;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.list-info {
+    margin-top: 16px;
+}
+
+.game-name {
+    font-size: 18px;
+    line-height: 24px;
+    coloc: #596564;
+}
+
+.game-time {
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    color: #9B9B9B;
+}
+
+.game-class {
+    display: inline-block;
+    margin-top: 12px;
+    color: #626E6A;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.game-class-name {
+    display: inline-block;
+    margin-left: 5px;
+    padding-bottom: 4px;
+}
+
+.moment-time {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #9B9B9B;
+}
+
+.moment-intent {
+    padding: 4px;
+}
+
+.back-color {
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.my-userInfo {
+    font-size: 0.9em;
+    color: #a0a0a0;
+    font-weight: 300;
+}
+
+.left-list {
+    margin-top: 0;
+    margin-bottom: 0;
+    letter-spacing: 0.1em;
+}
+
+.left-list li a {
+    width: 100%;
+    height: 35px;
+    font-size: 1.2em;
+    line-height: 35px;
+}
+
+ul li.active {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.left-list li:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.rank-item {
+    height: 30px;
+}
+
+.rank-name {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.rank {
+    font-size: 16px;
+}
+
+#refreshButton {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 4px;
+    margin-top: 7px;
+    transition: .3s;
+    -webkit-transition: .3s;
+    -mozilla-transition: .3s;
+}
+
+#refreshButton:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+header, main {
+    padding-left: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+    header, main {
+        padding-left: 0;
+    }
+}
+
+.top-nav{
+    height: 100px;
+}
+
+a.page-title{
+    line-height: 100px;
+    font-size: 38px;
+}
+
+.side-nav a{
+    font-size: 18px;
+}
+
+.card-price{
+    position: absolute;
+    bottom: 18px;
+    font-size: 24px;
+    right:20px;
+    color: white;
+}
+
+.none{
+    display: none;
+}
