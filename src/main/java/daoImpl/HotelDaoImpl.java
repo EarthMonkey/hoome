@@ -59,6 +59,27 @@ public class HotelDaoImpl implements HotelDao {
         }
     }
 
+    @Override
+    public Hotel getHotelById(int id) {
+
+        Hotel hotel = null;
+        try {
+            session = HibernateUtil.currentSession();
+            criteria = session.createCriteria(entity.Hotel.class);
+            criteria.add(Restrictions.eq("id", id));
+            List<Hotel> list = criteria.list();
+            if (list.size() != 0) {
+                hotel = list.get(0);
+            }
+            return hotel;
+        } catch (Exception e) {
+            e.printStackTrace();
+            HibernateUtil.closeSession();
+            return hotel;
+        }
+
+    }
+
     public static void main(String[] args){
         HotelDaoImpl a = new HotelDaoImpl();
         Integer b = a.maxId();

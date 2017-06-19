@@ -1,5 +1,6 @@
 package controller;
 
+import model.CountryMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,9 +47,9 @@ public class AnalysisController {
      * [季度] [{name: '', value: }]
      * */
     @RequestMapping(value = "/finance/countryMap")
-    public Object[][] getFinanceCountryMap() {
+    public ArrayList<ArrayList<CountryMap>> getFinanceCountryMap() {
 
-        return null;
+        return analysisService.getFinanceCountryMap();
     }
 
     // 订单管理

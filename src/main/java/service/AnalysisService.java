@@ -1,7 +1,8 @@
 package service;
 
+import model.CountryMap;
+
 import java.util.ArrayList;
-import java.util.Map;
 
 /**
  * Created by L.H.S on 2017/6/18.
@@ -13,7 +14,7 @@ public interface AnalysisService {
 
     ArrayList<String[]> getFinanceCalendar();
 
-    Object[][] getFinanceCountryMap();
+    ArrayList<ArrayList<CountryMap>> getFinanceCountryMap();
 
     /**订单管理 */
 

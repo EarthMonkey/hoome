@@ -10,4 +10,6 @@ public interface HotelDao {
     boolean addHotel(Hotel hotel);
     boolean updateHotel(Hotel hotel);
     Integer maxId();
+
+    Hotel getHotelById(int id);
 }

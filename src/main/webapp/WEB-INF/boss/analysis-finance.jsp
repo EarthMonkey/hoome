@@ -53,7 +53,6 @@
 <script src="/js/charts/country-map.js"></script>
 <script src="/js/china.js"></script>
 <script>
-    getCountryMap("countryMap");
 
     $.ajax({
         url: "/analysis/finance/lineBar",
@@ -74,6 +73,17 @@
         },
         error: function () {
             console.log("fail to get calendar-heat-map");
+        }
+    });
+
+    $.ajax({
+        url: "/analysis/finance/countryMap",
+        method: "POST",
+        success: function (data) {
+            getCountryMap("countryMap", data);
+        },
+        error: function () {
+            console.log("fail to get country-map");
         }
     });
 </script>
