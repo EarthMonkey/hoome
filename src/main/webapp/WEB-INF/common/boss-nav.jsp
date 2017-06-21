@@ -22,7 +22,7 @@
     <li><a href="/boss/analysis-order" class="waves-effect"><i class="material-icons">assignment</i>订单管理</a></li>
     <li><a href="/boss/analysis-member" class="waves-effect"><i class="material-icons">perm_identity</i>会员管理</a></li>
     <li><a href="/boss/analysis-checkin" class="waves-effect"><i class="material-icons">business</i>入住管理</a></li>
-    <li><a href="/boss/analysis-market" class="waves-effect"><i class="material-icons">shopping_cart</i>销售管理</a></li>
+    <li><a href="/boss/analysis-market" class="waves-effect"><i class="material-icons">shopping_cart</i>市场计划</a></li>
 
     <li>
         <div class="divider"></div>

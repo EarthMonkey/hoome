@@ -22,7 +22,7 @@
 <header>
     <nav class="top-nav teal lighten-1">
         <div class="container">
-            <div class="nav-wrapper"><a class="page-title">销售管理</a></div>
+            <div class="nav-wrapper"><a class="page-title">市场计划</a></div>
         </div>
     </nav>
     <%@ include file="../common/boss-nav.jsp" %>

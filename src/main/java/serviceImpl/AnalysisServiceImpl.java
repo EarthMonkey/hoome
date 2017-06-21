@@ -6,6 +6,7 @@ import dao.HotelDao;
 import dao.RoomCustomerDao;
 import entity.BookRecord;
 import entity.BossPay;
+import entity.Hotel;
 import model.CountryMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -184,6 +185,48 @@ public class AnalysisServiceImpl implements AnalysisService {
     }
 
     @Override
+    public ArrayList<String[]> getFinanceBigBar() {
+
+        Map<String, Double> map = new HashMap<>();
+
+        List<BookRecord> books = bookRecordDao.getRecords();
+        for (BookRecord br : books) {
+
+            int hotelId = br.getHotelId();
+            Hotel hotel = hotelDao.getHotelById(hotelId);
+            String hotelName = hotel.getName();
+
+            if (map.containsKey(hotelName)) {
+                map.put(hotelName, map.get(hotelName) + br.getAmount());
+            } else {
+                map.put(hotelName, br.getAmount());
+            }
+        }
+
+        ArrayList<String[]> results = new ArrayList<>();
+
+        String xAxis[] = new String[map.size()];
+        String vals[] = new String[map.size()];
+
+        int pos = 0;
+        Set<String> keySets = map.keySet();
+        for (String key : keySets) {
+            xAxis[pos] = key;
+            vals[pos] = map.get(key) + "";
+            pos++;
+        }
+
+        results.add(xAxis);
+        results.add(vals);
+
+        return results;
+    }
+
+    /**
+     * 会员管理
+     */
+
+    @Override
     public double[][] getOrderLineBar() {
 
         double result[][] = new double[2][12];
@@ -348,6 +391,44 @@ public class AnalysisServiceImpl implements AnalysisService {
         list.add(c2);
 
         return list;
+    }
+
+    @Override
+    public ArrayList<String[]> getOrderBigBar() {
+
+        Map<String, Integer> map = new HashMap<>();
+
+        List<BookRecord> books = bookRecordDao.getRecords();
+        for (BookRecord br : books) {
+
+            int hotelId = br.getHotelId();
+            Hotel hotel = hotelDao.getHotelById(hotelId);
+            String hotelName = hotel.getName();
+
+            if (map.containsKey(hotelName)) {
+                map.put(hotelName, map.get(hotelName) + 1);
+            } else {
+                map.put(hotelName, 1);
+            }
+        }
+
+        ArrayList<String[]> results = new ArrayList<>();
+
+        String xAxis[] = new String[map.size()];
+        String vals[] = new String[map.size()];
+
+        int pos = 0;
+        Set<String> keySets = map.keySet();
+        for (String key : keySets) {
+            xAxis[pos] = key;
+            vals[pos] = map.get(key) + "";
+            pos++;
+        }
+
+        results.add(xAxis);
+        results.add(vals);
+
+        return results;
     }
 
     /**
@@ -528,28 +609,28 @@ public class AnalysisServiceImpl implements AnalysisService {
         ArrayList<CountryMap> lists1 = new ArrayList<>();
         Set<String> keySets1 = map1.keySet();
         for (String key : keySets1) {
-            CountryMap cmap = new CountryMap(key, map1.get(key)*2);
+            CountryMap cmap = new CountryMap(key, map1.get(key) * 2);
             lists1.add(cmap);
         }
 
         ArrayList<CountryMap> lists2 = new ArrayList<>();
         Set<String> keySets2 = map2.keySet();
         for (String key : keySets2) {
-            CountryMap cmap = new CountryMap(key, map2.get(key)*2);
+            CountryMap cmap = new CountryMap(key, map2.get(key) * 2);
             lists2.add(cmap);
         }
 
         ArrayList<CountryMap> lists3 = new ArrayList<>();
         Set<String> keySets3 = map3.keySet();
         for (String key : keySets3) {
-            CountryMap cmap = new CountryMap(key, map3.get(key)*2);
+            CountryMap cmap = new CountryMap(key, map3.get(key) * 2);
             lists3.add(cmap);
         }
 
         ArrayList<CountryMap> lists4 = new ArrayList<>();
         Set<String> keySets4 = map4.keySet();
         for (String key : keySets4) {
-            CountryMap cmap = new CountryMap(key, map4.get(key)*2);
+            CountryMap cmap = new CountryMap(key, map4.get(key) * 2);
             lists4.add(cmap);
         }
 

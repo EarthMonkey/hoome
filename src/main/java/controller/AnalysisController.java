@@ -53,6 +53,12 @@ public class AnalysisController {
         return analysisService.getFinanceCountryMap();
     }
 
+    @RequestMapping(value = "/finance/getBigBar")
+    public ArrayList<String[]> getFinanceBigBar() {
+
+        return analysisService.getFinanceBigBar();
+    }
+
     // 订单管理
     @RequestMapping(value = "/order/lineBar")
     public double[][] getOrderLineBar() {
@@ -76,6 +82,12 @@ public class AnalysisController {
     public ArrayList<CountryMap> getOrderPie() {
 
         return analysisService.getOrderPieChart();
+    }
+
+    @RequestMapping(value = "/order/getBigBar")
+    public ArrayList<String[]> getOrderBigBar() {
+
+        return analysisService.getOrderBigBar();
     }
 
     // 会员管理

@@ -16,6 +16,8 @@ public interface AnalysisService {
 
     ArrayList<ArrayList<CountryMap>> getFinanceCountryMap();
 
+    ArrayList<String[]> getFinanceBigBar();
+
     /**订单管理 */
     double[][] getOrderLineBar();
 
@@ -24,6 +26,8 @@ public interface AnalysisService {
     ArrayList<ArrayList<CountryMap>> getOrderCountryMap();
 
     ArrayList<CountryMap> getOrderPieChart();
+
+    ArrayList<String[]> getOrderBigBar();
 
     /**会员管理 */
     ArrayList<ArrayList<CountryMap>> getMemCountryMap();

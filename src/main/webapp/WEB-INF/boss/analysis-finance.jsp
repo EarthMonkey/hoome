@@ -40,6 +40,9 @@
 
         <blockquote><h5>全国各地销售额</h5></blockquote>
         <div id="countryMap" style="width: 100%; height: 500px;"></div>
+
+        <blockquote><h5>各客栈销售额</h5></blockquote>
+        <div id="bigBar" style="width: 100%; height: 500px;"></div>
     </div>
 </main>
 
@@ -51,6 +54,7 @@
 <script src="/js/charts/line-bar.js"></script>
 <script src="/js/charts/calendar-heatmap.js"></script>
 <script src="/js/charts/country-map.js"></script>
+<script src="/js/charts/big-bar.js"></script>
 <script src="/js/china.js"></script>
 <script>
 
@@ -86,6 +90,19 @@
             console.log("fail to get country-map");
         }
     });
+
+    $.ajax({
+        url: "/analysis/finance/getBigBar",
+        method: "POST",
+        success: function (data) {
+            getBigBar("bigBar", data, "各客栈销售额");
+        },
+        error: function () {
+            console.log("fail to get big-bar");
+        }
+    });
+
+
 </script>
 
 </body>

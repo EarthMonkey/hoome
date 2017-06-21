@@ -29,6 +29,13 @@ function getCountryMap(id, data, lengend_lbl) {
 
     }
 
+    var tempMax = max;
+    if (arguments.length == 2) {
+        for (var i=0; i<4; i++) {
+            max[i] = tempMax[0] +  tempMax[1] + tempMax[2] + tempMax[3];
+        }
+    }
+
     var option = {
         title: {
             subtext: '2016年',
