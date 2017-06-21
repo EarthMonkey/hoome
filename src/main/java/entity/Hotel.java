@@ -20,6 +20,7 @@ public class Hotel {
     private Collection<Room> roomsById;
     private String name;
 
+
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)

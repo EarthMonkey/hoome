@@ -32,13 +32,13 @@
 <main>
     <div class="container" style="min-height: 500px; padding-bottom: 50px;">
 
-        <blockquote><h5>每月销售额&总销售额</h5></blockquote>
+        <blockquote><h5>每月订单笔数&总订单数</h5></blockquote>
         <div id="lineBar" style="width: 100%; height: 400px;"></div>
 
-        <blockquote><h5>过去一年每日销售额</h5></blockquote>
+        <blockquote><h5>过去一年每日订单笔数</h5></blockquote>
         <div id="heatMap" style="width: 100%; height: 300px;"></div>
 
-        <blockquote><h5>全国各地销售额</h5></blockquote>
+        <blockquote><h5>全国各地订单笔数</h5></blockquote>
         <div id="countryMap" style="width: 100%; height: 500px;"></div>
 
         <blockquote><h5>会员所占比例</h5></blockquote>
@@ -57,10 +57,50 @@
 <script src="/js/charts/pie-chart.js"></script>
 <script src="/js/china.js"></script>
 <script>
-    getLineBar("lineBar");
-    getHeatmap("heatMap");
-    getCountryMap("countryMap");
-    getPieChart("pieChart");
+    $.ajax({
+        url: "/analysis/order/lineBar",
+        method: "POST",
+        success: function (data) {
+            getLineBar("lineBar", data);
+        },
+        error: function () {
+            console.log("fail to get line-bar-chart");
+        }
+    });
+
+    $.ajax({
+        url: "/analysis/order/calendar",
+        method: "POST",
+        success: function (data) {
+            getHeatmap("heatMap", data);
+        },
+        error: function () {
+            console.log("fail to get calendar-heat-map");
+        }
+    });
+
+    $.ajax({
+        url: "/analysis/order/countryMap",
+        method: "POST",
+        success: function (data) {
+            getCountryMap("countryMap", data);
+        },
+        error: function () {
+            console.log("fail to get country-map");
+        }
+    });
+
+    $.ajax({
+        url: "/analysis/order/pieChart",
+        method: "POST",
+        success: function (data) {
+            console.log(data);
+            getPieChart("pieChart", data);
+        },
+        error: function () {
+            console.log("fail to get pie-chart");
+        }
+    });
 </script>
 
 </body>

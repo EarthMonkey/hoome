@@ -8,10 +8,14 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import java.awt.print.Book;
 import java.math.BigInteger;
+import java.sql.Timestamp;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by marioquer on 2017/3/17.
@@ -129,9 +133,44 @@ public class BookRecordDaoImpl implements BookRecordDao {
     }
 
     public static void main(String[] args) {
-        Long a = new Long(1111);
-        BigInteger b = new BigInteger(a.toString());
-        System.out.println(b);
-        System.out.println(new Long(b.toString()));
+
+        BookRecordDaoImpl b = new BookRecordDaoImpl();
+
+        String first = "2016-08-15 12:00:00";
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+        Date date = new Date();
+        try {
+            date = df.parse(first);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        for (int i = 0; i < 10; i++) {
+
+
+            date = new Date(date.getTime() + 24*3600*1000* (i%100));
+            String dstr = df.format(date);
+
+            BookRecord bookRecord = new BookRecord();
+            bookRecord.setBookerId(7);
+            double amount = Math.random() * 1000;
+            DecimalFormat decimalFormat = new DecimalFormat("#.0");
+            bookRecord.setAmount(Double.parseDouble(decimalFormat.format(amount)));
+            bookRecord.setRoomStyle((byte) 0);
+            bookRecord.setStatus((byte) 1);
+            bookRecord.setTargetInTime("");
+            bookRecord.setTargetOutTime("");
+            bookRecord.setPayMethod((byte) 1);
+            bookRecord.setHotelId(i % 165 + 1);
+            bookRecord.setHotelName("");
+            bookRecord.setBookTime(Timestamp.valueOf(dstr));
+            bookRecord.setIsPaid((byte) 0);
+
+            b.addRecord(bookRecord);
+        }
+
+
     }
 }

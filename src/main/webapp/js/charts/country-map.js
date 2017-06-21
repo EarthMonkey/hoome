@@ -6,38 +6,48 @@ function getCountryMap(id, data) {
 
     var chart = echarts.init(document.getElementById(id));
 
+    var max = 0;
+    for (var i = 0; i < data.length; i++) {
+        for (var j = 0; j < data[i].length; j++) {
+            if (data[i][j].value > max) {
+                max = data[i][j].value;
+            }
+        }
+
+    }
+
     var option = {
-        title : {
+        title: {
             text: '全国各地客栈销售额',
             subtext: '2016年',
-            x:'center'
+            x: 'center'
         },
-        tooltip : {
+        tooltip: {
             trigger: 'item'
         },
         legend: {
             orient: 'vertical',
-            x:'left',
-            data:['第一季度','第二季度','第三季度', '第四季度']
+            x: 'left',
+            data: ['第一季度', '第二季度', '第三季度', '第四季度']
         },
         dataRange: {
             min: 0,
-            max: 2500,
+            max: max,
             x: 'left',
             y: 'bottom',
-            text:['高','低'],           // 文本，默认为数值文本
-            calculable : true
+            text: ['高', '低'],           // 文本，默认为数值文本
+            calculable: true
         },
         toolbox: {
             show: true,
-            orient : 'vertical',
+            orient: 'vertical',
             x: 'right',
             y: 'center',
-            feature : {
-                mark : {show: true},
-                dataView : {show: true, readOnly: false},
-                restore : {show: true},
-                saveAsImage : {show: true}
+            feature: {
+                mark: {show: true},
+                dataView: {show: true, readOnly: false},
+                restore: {show: true},
+                saveAsImage: {show: true}
             }
         },
         roamController: {
@@ -47,15 +57,15 @@ function getCountryMap(id, data) {
                 'china': true
             }
         },
-        series : [
+        series: [
             {
                 name: '第一季度',
                 type: 'map',
                 mapType: 'china',
                 roam: false,
-                itemStyle:{
-                    normal:{label:{show:true}},
-                    emphasis:{label:{show:true}}
+                itemStyle: {
+                    normal: {label: {show: true}},
+                    emphasis: {label: {show: true}}
                 },
                 data: data[0]
             },
@@ -63,9 +73,9 @@ function getCountryMap(id, data) {
                 name: '第二季度',
                 type: 'map',
                 mapType: 'china',
-                itemStyle:{
-                    normal:{label:{show:true}},
-                    emphasis:{label:{show:true}}
+                itemStyle: {
+                    normal: {label: {show: true}},
+                    emphasis: {label: {show: true}}
                 },
                 data: data[1]
             },
@@ -73,9 +83,9 @@ function getCountryMap(id, data) {
                 name: '第三季度',
                 type: 'map',
                 mapType: 'china',
-                itemStyle:{
-                    normal:{label:{show:true}},
-                    emphasis:{label:{show:true}}
+                itemStyle: {
+                    normal: {label: {show: true}},
+                    emphasis: {label: {show: true}}
                 },
                 data: data[2]
             },
@@ -83,9 +93,9 @@ function getCountryMap(id, data) {
                 name: '第四季度',
                 type: 'map',
                 mapType: 'china',
-                itemStyle:{
-                    normal:{label:{show:true}},
-                    emphasis:{label:{show:true}}
+                itemStyle: {
+                    normal: {label: {show: true}},
+                    emphasis: {label: {show: true}}
                 },
                 data: data[3]
             }

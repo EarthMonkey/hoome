@@ -33,7 +33,7 @@ public class HotelDaoImpl implements HotelDao {
 
     @Override
     public Integer maxId() {
-        String sql="select max(id) from hotel";
+        String sql = "select max(id) from hotel";
         session = HibernateUtil.currentSession();
         List<Integer> list = session.createSQLQuery(sql).list();
         HibernateUtil.closeSession();
@@ -80,10 +80,30 @@ public class HotelDaoImpl implements HotelDao {
 
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         HotelDaoImpl a = new HotelDaoImpl();
-        Integer b = a.maxId();
-        System.out.println(b);
 
+        String[] address = {"北京-鼓楼", "黑龙江-哈尔滨", "内蒙古-呼和浩特", "新疆-塔里木", "西藏-香格里拉"
+                , "青海-青海", "甘肃-西安", "宁夏-银川", "山西-山西", "天津-狗不理", "山东-青岛", "安徽-合肥"
+                , "江苏-南京", "上海-浦东", "湖北-武汉", "湖南-湖南", "贵州-贵阳", "重庆-火锅", "四川-吐鲁番"
+                , "云南-西双版纳", "广西-西部", "广东-广州", "福建-胡建", "江西-赣江", "浙江-杭州", "香港-九龙湾"
+                , "澳门-都城", "海南-海口", "台湾-台北", "陕西-兵马俑", "河北-衡水", "辽宁-长春"};
+        int ownerId[] = {5, 6, 9, 10, 11, 15};
+
+        int n = address.length;
+        for (int i = 0; i < n * 5; i++) {
+
+            Hotel hotel = new Hotel();
+            hotel.setSmallNum(100);
+            hotel.setBigNum(200);
+            hotel.setAddress(address[i % n]);
+            hotel.setPhone("12334456");
+            hotel.setOwnerId(ownerId[i % 6]);
+            hotel.setIntroduction(address[i % n] + "第" + i + "客栈");
+            hotel.setName(address[i % n] + "第" + i + "客栈");
+
+            a.addHotel(hotel);
+        }
     }
+
 }

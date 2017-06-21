@@ -53,6 +53,29 @@ public class AnalysisController {
     }
 
     // 订单管理
+    @RequestMapping(value = "/order/lineBar")
+    public double[][] getOrderLineBar() {
+
+        return analysisService.getOrderLineBar();
+    }
+
+    @RequestMapping(value = "/order/calendar")
+    public ArrayList<String[]> getOrderCalendar() {
+
+        return analysisService.getOrderCalendar();
+    }
+
+    @RequestMapping(value = "/order/countryMap")
+    public ArrayList<ArrayList<CountryMap>> getOrderCountryMap() {
+
+        return analysisService.getOrderCountryMap();
+    }
+
+    @RequestMapping(value = "/order/pieChart")
+    public ArrayList<CountryMap> getOrderPie() {
+
+        return analysisService.getOrderPieChart();
+    }
 
     // 会员管理
 

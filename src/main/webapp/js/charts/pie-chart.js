@@ -7,16 +7,6 @@ function getPieChart(id, data) {
     var chart = echarts.init(document.getElementById(id));
 
     var option = {
-        backgroundColor: '#2c343c',
-
-        title: {
-            text: 'Customized Pie',
-            left: 'center',
-            top: 20,
-            textStyle: {
-                color: '#ccc'
-            }
-        },
 
         tooltip : {
             trigger: 'item',
@@ -33,26 +23,26 @@ function getPieChart(id, data) {
         },
         series : [
             {
-                name:'访问来源',
+                name:'会员所占比例',
                 type:'pie',
                 radius : '55%',
                 center: ['50%', '50%'],
                 data:[
-                    {value:335, name:'直接访问'},
-                    {value:310, name:'邮件营销'}
+                    {value:data[0].value, name:data[0].name},
+                    {value:data[1].value, name:data[1].name}
                 ].sort(function (a, b) { return a.value - b.value; }),
                 roseType: 'radius',
                 label: {
                     normal: {
                         textStyle: {
-                            color: 'rgba(255, 255, 255, 0.3)'
+                            color: 'rgba(0, 0, 0, 0.4)'
                         }
                     }
                 },
                 labelLine: {
                     normal: {
                         lineStyle: {
-                            color: 'rgba(255, 255, 255, 0.3)'
+                            color: 'rgba(0, 0, 0, 0.3)'
                         },
                         smooth: 0.2,
                         length: 10,

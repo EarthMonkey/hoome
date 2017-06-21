@@ -7,6 +7,9 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -45,5 +48,38 @@ public class BossPayDaoImpl implements BossPayDao {
             HibernateUtil.closeSession();
             return null;
         }
+    }
+
+    public static void main(String[] args) {
+
+        BossPayDaoImpl b = new BossPayDaoImpl();
+
+        String first = "2016-10-02 12:00:00";
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+        Date date = new Date();
+        try {
+            date = df.parse(first);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        for (int i = 0; i < 10; i++) {
+
+            date = new Date(date.getTime() + 24 * 3600 * 1000 * i);
+            String dstr = df.format(date);
+
+            BossPay bossPay = new BossPay();
+            bossPay.setCreatedAt(Timestamp.valueOf(dstr));
+
+            int amount = (int) (Math.random() * 1000);
+
+            bossPay.setMoney(amount * 0.8);
+            bossPay.setRecordId(i + 10);
+
+            b.addBossPay(bossPay);
+        }
+
+
     }
 }

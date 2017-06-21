@@ -17,7 +17,13 @@ public interface AnalysisService {
     ArrayList<ArrayList<CountryMap>> getFinanceCountryMap();
 
     /**订单管理 */
+    double[][] getOrderLineBar();
 
+    ArrayList<String[]> getOrderCalendar();
+
+    ArrayList<ArrayList<CountryMap>> getOrderCountryMap();
+
+    ArrayList<CountryMap> getOrderPieChart();
 
     /**会员管理 */
 

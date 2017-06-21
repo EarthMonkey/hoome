@@ -25,7 +25,7 @@ function getLineBar(id, data) {
             }
         },
         legend: {
-            data: ['每月销售额', '总销售额']
+            data: ['当月销售额', '总销售额']
         },
         xAxis: [
             {
@@ -54,7 +54,7 @@ function getLineBar(id, data) {
         ],
         series: [
             {
-                name: '每月销售额',
+                name: '当月销售额',
                 type: 'bar',
                 data: data[0]
             },

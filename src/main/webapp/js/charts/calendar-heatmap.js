@@ -30,8 +30,6 @@ function getHeatmap(id, data) {
         }
     }
 
-    max = Math.pow(10, max.toString().length);
-
     var option = {
         title: {
             top: 30,
@@ -41,7 +39,7 @@ function getHeatmap(id, data) {
         tooltip: {},
         visualMap: {
             min: 0,
-            max: max,
+            max:  max,
             type: 'piecewise',
             orient: 'horizontal',
             left: 'center',
