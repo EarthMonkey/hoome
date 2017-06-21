@@ -58,7 +58,7 @@
         url: "/analysis/finance/lineBar",
         method: "POST",
         success: function (data) {
-            getLineBar("lineBar", data);
+            getLineBar("lineBar", data, ["月销售额", '总销售额']);
         },
         error: function () {
             console.log("fail to get line-bar-chart");

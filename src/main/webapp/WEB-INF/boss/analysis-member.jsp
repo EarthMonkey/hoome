@@ -30,8 +30,13 @@
 </header>
 
 <main>
-    <div class="container" style="min-height: 500px;">
+    <div class="container" style="min-height: 500px; padding-bottom: 50px;">
 
+        <blockquote><h5>各地会员预订入住率&平均消费额&预订次数&总消费额</h5></blockquote>
+        <div id="countryMap" style="width: 100%; height: 500px;"></div>
+
+        <blockquote><h5>会员预订各房型所占比例</h5></blockquote>
+        <div id="pieChart" style="width: 100%; height: 500px;"></div>
     </div>
 </main>
 
@@ -39,6 +44,58 @@
 <script src="/js/jquery.min.js"></script>
 <script src="/js/materialize.js"></script>
 <script src="/js/init.js"></script>
+<script src="/js/echarts.min.js"></script>
+<%--<script src="/js/charts/line-bar.js"></script>--%>
+<%--<script src="/js/charts/calendar-heatmap.js"></script>--%>
+<script src="/js/charts/country-map.js"></script>
+<script src="/js/charts/pie-chart.js"></script>
+<script src="/js/china.js"></script>
+<script>
+    //    $.ajax({
+    //        url: "/analysis/order/lineBar",
+    //        method: "POST",
+    //        success: function (data) {
+    //            getLineBar("lineBar", data);
+    //        },
+    //        error: function () {
+    //            console.log("fail to get line-bar-chart");
+    //        }
+    //    });
+    //
+    //    $.ajax({
+    //        url: "/analysis/order/calendar",
+    //        method: "POST",
+    //        success: function (data) {
+    //            getHeatmap("heatMap", data);
+    //        },
+    //        error: function () {
+    //            console.log("fail to get calendar-heat-map");
+    //        }
+    //    });
+
+    $.ajax({
+        url: "/analysis/member/countryMap",
+        method: "POST",
+        success: function (data) {
+            getCountryMap("countryMap", data, ["预订入住率", "平均消费额", "预订次数", "总消费额"]);
+        },
+        error: function () {
+            console.log("fail to get country-map");
+        }
+    });
+
+    $.ajax({
+        url: "/analysis/member/pieChart",
+        method: "POST",
+        success: function (data) {
+            console.log(data);
+            getPieChart("pieChart", data);
+        },
+        error: function () {
+            console.log("fail to get pie-chart");
+        }
+    });
+</script>
 
 </body>
 </html>

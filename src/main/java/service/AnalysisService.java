@@ -26,10 +26,17 @@ public interface AnalysisService {
     ArrayList<CountryMap> getOrderPieChart();
 
     /**会员管理 */
+    ArrayList<ArrayList<CountryMap>> getMemCountryMap();
+
+    ArrayList<CountryMap> getMemberPie();
 
     /**入住管理 */
+    ArrayList<CountryMap> getStylePie();
+
+    ArrayList<ArrayList<CountryMap>> getCheckInCountryMap();
 
     /**销售管理 */
+    ArrayList<String> getMarket();
 
 
 }

@@ -2,7 +2,7 @@
  * Created by L.H.S on 2017/6/15.
  */
 
-function getLineBar(id, data) {
+function getLineBar(id, data, legend_lbl) {
 
     var chart = echarts.init(document.getElementById(id));
 
@@ -25,7 +25,7 @@ function getLineBar(id, data) {
             }
         },
         legend: {
-            data: ['当月销售额', '总销售额']
+            data: legend_lbl
         },
         xAxis: [
             {
@@ -39,14 +39,14 @@ function getLineBar(id, data) {
         yAxis: [
             {
                 type: 'value',
-                name: '月销售额',
+                name: legend_lbl[0],
                 axisLabel: {
                     formatter: '{value}'
                 }
             },
             {
                 type: 'value',
-                name: '总销售额',
+                name: legend_lbl[1],
                 axisLabel: {
                     formatter: '{value}'
                 }
@@ -54,12 +54,12 @@ function getLineBar(id, data) {
         ],
         series: [
             {
-                name: '当月销售额',
+                name: legend_lbl[0],
                 type: 'bar',
                 data: data[0]
             },
             {
-                name: '总销售额',
+                name: legend_lbl[1],
                 type: 'line',
                 yAxisIndex: 1,
                 data: data[1]

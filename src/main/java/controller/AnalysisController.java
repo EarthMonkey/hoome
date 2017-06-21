@@ -23,9 +23,10 @@ public class AnalysisController {
     AnalysisService analysisService;
 
     // 财务管理
+
     /**
      * [每月销售额][总销售额]
-     * */
+     */
     @RequestMapping(value = "/finance/lineBar")
     public double[][] getFinanceLineBar() {
 
@@ -35,7 +36,7 @@ public class AnalysisController {
     /**
      * 日历图
      * ["2016-01-01", data]
-     * */
+     */
     @RequestMapping(value = "/finance/calendar")
     public ArrayList<String[]> getFinanceCalendar() {
 
@@ -45,7 +46,7 @@ public class AnalysisController {
     /**
      * china map
      * [季度] [{name: '', value: }]
-     * */
+     */
     @RequestMapping(value = "/finance/countryMap")
     public ArrayList<ArrayList<CountryMap>> getFinanceCountryMap() {
 
@@ -78,9 +79,35 @@ public class AnalysisController {
     }
 
     // 会员管理
+    @RequestMapping(value = "/member/countryMap")
+    public ArrayList<ArrayList<CountryMap>> getMemCountryMap() {
+
+        return analysisService.getMemCountryMap();
+    }
+
+    @RequestMapping(value = "/member/pieChart")
+    public ArrayList<CountryMap> getMemberPie() {
+
+        return analysisService.getMemberPie();
+    }
 
     // 入住管理
+    @RequestMapping(value = "/checkIn/stylePieChart")
+    public ArrayList<CountryMap> getStylePie() {
+
+        return analysisService.getStylePie();
+    }
+
+    @RequestMapping(value = "/checkIn/countryMap")
+    ArrayList<ArrayList<CountryMap>> getCheckInCountryMap() {
+
+        return analysisService.getCheckInCountryMap();
+    }
 
     // 销售管理
+    @RequestMapping(value = "/market/plan")
+    public ArrayList<String> getMarketPlan() {
 
+        return analysisService.getMarket();
+    }
 }

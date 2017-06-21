@@ -30,7 +30,16 @@
 </header>
 
 <main>
-    <div class="container" style="min-height: 500px;">
+    <div class="container" style="min-height: 500px; padding-bottom: 50px;">
+
+        <blockquote><h5>各房型入住所占比例</h5></blockquote>
+        <div id="stylePieChart" style="width: 100%; height: 500px;"></div>
+
+        <blockquote><h5>会员入住所占比例</h5></blockquote>
+        <div id="pieChart" style="width: 100%; height: 500px;"></div>
+
+        <blockquote><h5>全国各地入住人数</h5></blockquote>
+        <div id="countryMap" style="width: 100%; height: 500px;"></div>
 
     </div>
 </main>
@@ -39,6 +48,46 @@
 <script src="/js/jquery.min.js"></script>
 <script src="/js/materialize.js"></script>
 <script src="/js/init.js"></script>
+<script src="/js/echarts.min.js"></script>
+<script src="/js/charts/country-map.js"></script>
+<script src="/js/charts/pie-chart.js"></script>
+<script src="/js/china.js"></script>
+<script>
+    $.ajax({
+        url: "/analysis/checkIn/countryMap",
+        method: "POST",
+        success: function (data) {
+            getCountryMap("countryMap", data);
+        },
+        error: function () {
+            console.log("fail to get country-map");
+        }
+    });
+
+    $.ajax({
+        url: "/analysis/checkIn/stylePieChart",
+        method: "POST",
+        success: function (data) {
+            console.log(data);
+            getPieChart("stylePieChart", data, "各房型入住所占比例");
+        },
+        error: function () {
+            console.log("fail to get pie-chart");
+        }
+    });
+
+    $.ajax({
+        url: "/analysis/order/pieChart",
+        method: "POST",
+        success: function (data) {
+            console.log(data);
+            getPieChart("pieChart", data, "会员入住所占比例");
+        },
+        error: function () {
+            console.log("fail to get pie-chart");
+        }
+    });
+</script>
 
 </body>
 </html>

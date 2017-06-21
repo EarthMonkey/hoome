@@ -31,11 +31,6 @@ function getHeatmap(id, data) {
     }
 
     var option = {
-        title: {
-            top: 30,
-            left: 'center',
-            text: '2016年客栈每天的销售额'
-        },
         tooltip: {},
         visualMap: {
             min: 0,

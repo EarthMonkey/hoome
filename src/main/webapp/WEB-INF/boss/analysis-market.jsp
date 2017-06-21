@@ -30,8 +30,14 @@
 </header>
 
 <main>
-    <div class="container" style="min-height: 500px;">
+    <div class="container" style="min-height: 500px; padding-bottom: 50px;">
 
+        <blockquote><h5>市场计划前瞻</h5></blockquote>
+        <div>
+            <ul class="collection" id="plan">
+
+            </ul>
+        </div>
     </div>
 </main>
 
@@ -39,6 +45,21 @@
 <script src="/js/jquery.min.js"></script>
 <script src="/js/materialize.js"></script>
 <script src="/js/init.js"></script>
+<script>
+    $.ajax({
+        url: "/analysis/market/plan",
+        method: "POST",
+        success: function (data) {
+            for (var i=0; i<data.length; i++) {
+                var li = $("<li class='collection-item'>"+ data[i] +"</li>");
+                $("#plan").append(li);
+            }
+        },
+        error: function () {
+            console.log("fail to get plan");
+        }
+    });
+</script>
 
 </body>
 </html>

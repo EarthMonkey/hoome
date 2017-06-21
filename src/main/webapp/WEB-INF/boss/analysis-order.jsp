@@ -41,7 +41,7 @@
         <blockquote><h5>全国各地订单笔数</h5></blockquote>
         <div id="countryMap" style="width: 100%; height: 500px;"></div>
 
-        <blockquote><h5>会员所占比例</h5></blockquote>
+        <blockquote><h5>订单入住所占比例</h5></blockquote>
         <div id="pieChart" style="width: 100%; height: 500px;"></div>
     </div>
 </main>
@@ -61,7 +61,7 @@
         url: "/analysis/order/lineBar",
         method: "POST",
         success: function (data) {
-            getLineBar("lineBar", data);
+            getLineBar("lineBar", data, ["月订单数", "总订单数"]);
         },
         error: function () {
             console.log("fail to get line-bar-chart");
@@ -95,7 +95,7 @@
         method: "POST",
         success: function (data) {
             console.log(data);
-            getPieChart("pieChart", data);
+            getPieChart("pieChart", data, "订单入住所占比例");
         },
         error: function () {
             console.log("fail to get pie-chart");

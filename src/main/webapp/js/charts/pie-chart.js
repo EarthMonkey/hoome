@@ -2,13 +2,13 @@
  * Created by L.H.S on 2017/6/15.
  */
 
-function getPieChart(id, data) {
+function getPieChart(id, data, lbl) {
 
     var chart = echarts.init(document.getElementById(id));
 
     var option = {
 
-        tooltip : {
+        tooltip: {
             trigger: 'item',
             formatter: "{a} <br/>{b} : {c} ({d}%)"
         },
@@ -21,16 +21,15 @@ function getPieChart(id, data) {
                 colorLightness: [0, 1]
             }
         },
-        series : [
+        series: [
             {
-                name:'会员所占比例',
-                type:'pie',
-                radius : '55%',
+                name: lbl,
+                type: 'pie',
+                radius: '55%',
                 center: ['50%', '50%'],
-                data:[
-                    {value:data[0].value, name:data[0].name},
-                    {value:data[1].value, name:data[1].name}
-                ].sort(function (a, b) { return a.value - b.value; }),
+                data: data.sort(function (a, b) {
+                    return a.value - b.value;
+                }),
                 roseType: 'radius',
                 label: {
                     normal: {

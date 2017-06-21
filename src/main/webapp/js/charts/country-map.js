@@ -2,15 +2,28 @@
  * Created by L.H.S on 2017/6/13.
  */
 
-function getCountryMap(id, data) {
+function getCountryMap(id, data, lengend_lbl) {
+
+    var selectMode = "multiple";
+
+    if (arguments.length == 2) {
+        lengend_lbl = ['第一季度', '第二季度', '第三季度', '第四季度'];
+    } else {
+        selectMode = "single";
+    }
+
+    var lbl1 = lengend_lbl[0];
+    var lbl2 = lengend_lbl[1];
+    var lbl3 = lengend_lbl[2];
+    var lbl4 = lengend_lbl[3];
 
     var chart = echarts.init(document.getElementById(id));
 
-    var max = 0;
+    var max = [0, 0, 0, 0];
     for (var i = 0; i < data.length; i++) {
         for (var j = 0; j < data[i].length; j++) {
-            if (data[i][j].value > max) {
-                max = data[i][j].value;
+            if (data[i][j].value > max[i]) {
+                max[i] = data[i][j].value;
             }
         }
 
@@ -18,7 +31,6 @@ function getCountryMap(id, data) {
 
     var option = {
         title: {
-            text: '全国各地客栈销售额',
             subtext: '2016年',
             x: 'center'
         },
@@ -28,11 +40,13 @@ function getCountryMap(id, data) {
         legend: {
             orient: 'vertical',
             x: 'left',
-            data: ['第一季度', '第二季度', '第三季度', '第四季度']
+            data: lengend_lbl,
+            selected: {},
+            selectedMode: selectMode
         },
         dataRange: {
             min: 0,
-            max: max,
+            max: max[0],
             x: 'left',
             y: 'bottom',
             text: ['高', '低'],           // 文本，默认为数值文本
@@ -59,7 +73,7 @@ function getCountryMap(id, data) {
         },
         series: [
             {
-                name: '第一季度',
+                name: lbl1,
                 type: 'map',
                 mapType: 'china',
                 roam: false,
@@ -70,7 +84,7 @@ function getCountryMap(id, data) {
                 data: data[0]
             },
             {
-                name: '第二季度',
+                name: lbl2,
                 type: 'map',
                 mapType: 'china',
                 itemStyle: {
@@ -80,7 +94,7 @@ function getCountryMap(id, data) {
                 data: data[1]
             },
             {
-                name: '第三季度',
+                name: lbl3,
                 type: 'map',
                 mapType: 'china',
                 itemStyle: {
@@ -90,7 +104,7 @@ function getCountryMap(id, data) {
                 data: data[2]
             },
             {
-                name: '第四季度',
+                name: lbl4,
                 type: 'map',
                 mapType: 'china',
                 itemStyle: {
@@ -102,5 +116,29 @@ function getCountryMap(id, data) {
         ]
     };
 
+    option.legend.selected[lbl2] = false;
+    option.legend.selected[lbl3] = false;
+    option.legend.selected[lbl4] = false;
+
     chart.setOption(option);
+
+    chart.on('legendselectchanged', function (params) {
+
+        if (selectMode != "single") return;
+
+        var lbl = params.name;
+        for (var i = 0; i < 4; i++) {
+            if (lengend_lbl[i] == lbl) {
+                console.log(i);
+                option.dataRange.max = max[i];
+                option.legend.selected[lengend_lbl[i]] = true;
+                option.legend.selected[lengend_lbl[(i + 1) % 4]] = false;
+                option.legend.selected[lengend_lbl[(i + 2) % 4]] = false;
+                option.legend.selected[lengend_lbl[(i + 3) % 4]] = false;
+                chart.setOption(option);
+                break;
+            }
+        }
+
+    });
 }
